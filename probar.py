@@ -20,7 +20,7 @@ def probar_navegador():
     from seleniumbase import Driver
     driver = None
     try:
-        driver = Driver(uc=True, xvfb=True)
+        driver = Driver(uc=True)
         driver.get(URL_HOME)
         time.sleep(6)
         driver.get(URL_API)
