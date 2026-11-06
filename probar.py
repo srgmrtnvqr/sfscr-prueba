@@ -25,7 +25,7 @@ def probar_navegador():
         time.sleep(6)
         driver.get(URL_API)
         time.sleep(3)
-        texto = driver.page_text
+        texto = driver.find_element('tag name', 'body').text
         print(texto[:300])
         json.loads(texto)
         print('JSON válido: OK')
