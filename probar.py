@@ -21,14 +21,17 @@ def probar_navegador():
     driver = None
     try:
         driver = Driver(uc=True)
-        driver.get(URL_HOME)
-        time.sleep(6)
+        driver.uc_open_with_reconnect(URL_HOME, 6)
+        time.sleep(5)
         driver.get(URL_API)
         time.sleep(3)
         texto = driver.find_element('tag name', 'body').text
         print(texto[:300])
-        json.loads(texto)
-        print('JSON válido: OK')
+        datos = json.loads(texto)
+        if 'error' in datos:
+            print('BLOQUEADO: la respuesta es un error')
+            return False
+        print('Datos reales recibidos: OK')
         return True
     except Exception as e:
         print('error:', str(e)[:200])
