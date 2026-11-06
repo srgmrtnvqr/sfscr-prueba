@@ -12,4 +12,4 @@ jobs:
         with:
           python-version: '3.11'
       - run: pip install seleniumbase curl_cffi
-      - run: python probar.py
+      - run: xvfb-run -a python probar.py
